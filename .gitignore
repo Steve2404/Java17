@@ -7,6 +7,7 @@ target/
 .idea/encodings.xml
 .idea/vcs.xml
 .idea/inspectionProfiles/Project_Default.xml
+.idea/
 .idea/misc.xml
 .idea/.gitignore
 .idea/modules.xml
