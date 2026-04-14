@@ -6,25 +6,32 @@ public class Invoice {
         int[] qty = {3, 12, 1};
         double [] unit = {0.59, 1.25, 1.09};
 
-        System.out.printf("*%-15s *%5s *%10s *%10s*%n", "-".repeat(15), "-".repeat(5), "-".repeat(10), "-".repeat(10));
-        System.out.printf("|%-15s |%5s |%10s |%10s|%n", "ITEM", "QTY", "UNIT", "TOTAL");
-
-        System.out.printf("*%-15s *%5s *%10s *%10s*%n", "-".repeat(15), "-".repeat(5), "-".repeat(10), "-".repeat(10));
+        String rowFormat = "|%-15s |%5s |%10s |%10s|%n";
+        String dataFormat = "|%-15s |%5d |%10.2f |%10.2f|%n";
 
         double total = 0.0;
-        double cost = 0.0;
+
+        printBorder();
+        System.out.printf(rowFormat, "ITEM", "QTY", "UNIT", "TOTAL");
+        printBorder();
+
         for (int i = 0; i < items.length; i++) {
-            cost = qty[i] * unit[i];
+            double cost = qty[i] * unit[i];
             total += cost;
 
 
-             System.out.printf("|%-15s |%5d |%10.2f |%10.2f|%n", "ITEM", qty[i], unit[i], cost);
+             System.out.printf(dataFormat, items[i], qty[i], unit[i], cost);
 
         }
 
-        System.out.printf("|%-15s |%5s |%10s |%10s|%n", " ", " ", " ", " ");
-        System.out.printf("*%-15s *%5s *%10s *%10s*%n", "-".repeat(15), "-".repeat(5), "-".repeat(10), "-".repeat(10));
+        System.out.printf(rowFormat, " ", " ", " ", " ");
+        printBorder();
         System.out.printf("|%-15s |%5s %10s %12.2f|%n", "Total", " ", " ", total);
-        System.out.printf("*%-15s *%5s *%10s *%10s*%n", "-".repeat(15), "-".repeat(5), "-".repeat(10), "-".repeat(10));
+        printBorder();
+    }
+
+    public static void printBorder() {
+        System.out.printf("*%-15s *%5s *%10s *%10s*%n",
+                "-".repeat(15), "-".repeat(5), "-".repeat(10), "-".repeat(10));
     }
 }
